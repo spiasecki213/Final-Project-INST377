@@ -8,6 +8,14 @@
     <title>Sam's INST377 Final Project</title>
 
     <link rel="stylesheet" href="style.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
   </head>
   <body>
     <!-- wrapper -->
@@ -24,22 +32,24 @@
           </ul>
         </div>
       </header>
-      <hr>
+
       <!-- container -->
       <div class="container">
         <div class="filter_section">
           <!-- map filters -->
           <h3>Filters</h3>
+          <hr>
+          <label for="start">Start Date:</label>
+          <input type="date" id="startdate" name="date-start" value=""
         </div>
         <div class="map_section">
           <!-- map -->
-          <h2>Map of Prince George's County</h2>
           <div id="map" class="box"></div>
-          </div>
         </div>
       </div>
-      <footer class="footer"></footer>
     </div>
-    <script src="./script.js"></script>
-  </body>
+    <footer class="footer"></footer>
+  </div>
+  <script src="./script.js"></script>
+</body>
 </html>
