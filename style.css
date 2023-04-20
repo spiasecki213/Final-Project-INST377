@@ -31,7 +31,7 @@ h6 {
 }
 
 p {
-    color:#000000;
+  color: #000000;
 }
 
 .wrapper {
@@ -136,5 +136,19 @@ p {
 }
 
 .search {
-    align-items: center;
+  align-items: center;
+}
+
+.about_section {
+  background-color: #ffffff;
+  color: #ffffff;
+  flex: 1 1 auto;
+  margin: 1rem;
+  padding: 1.5rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border: 4px solid;
+  border-color: #000000;
+  height: 400px;
 }
