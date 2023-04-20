@@ -1,4 +1,4 @@
 # INST377-Final-Project
 
 Link to Pages:
-https://spiasecki213.github.io/INST377-Final-Project/
+https://spiasecki213.github.io/Final-Project-INST377/
