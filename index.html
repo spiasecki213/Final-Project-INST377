@@ -36,6 +36,7 @@
       <!-- container -->
       <div class="container">
         <div class="filter_section">
+          <button type="button" id="data_load" class="hidden">Load Data</button>
           <!-- map filters -->
           <h3>Filters</h3>
           <hr>
@@ -71,6 +72,7 @@
               <option value="VANDALISM">Vandalism</option>
             </select>
           </form>
+          <!-- address search -->
           <h4>Address Search</h4>
           <input type="text" id="address" name="address">
           <br><hr><br>
@@ -79,6 +81,9 @@
         <div class="map_section">
           <!-- map -->
           <div id="map" class="box"></div>
+          <ol class="box" id="crimes_list">
+            List of crimes based on your filters
+          </ol>
         </div>
       </div>
     </div>
