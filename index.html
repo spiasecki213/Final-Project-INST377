@@ -32,52 +32,53 @@
           </ul>
         </div>
       </header>
-
       <!-- container -->
       <div class="container">
         <div class="filter_section">
-          <button type="button" id="data_load">Load Data</button>
-          <button type="button" id="data_clear">Clear Data</button>
-          <!-- map filters -->
-          <h3>Filters</h3>
-          <hr>
-          <!-- date filters -->
-          <h4>Date Range:</h4>
-          <input type="date" id="date-start" name="date-start" 
-          min="02/02/2017" max="04/13/2023">
-          <p>to</p>
-          <input type="date" id="date-end" name="date-end" 
-          min="02/02/2017" max="04/13/2023">
-          <!-- crime type filters -->
-          <h4>Crime Type:</h4>
-          <form id="crime_type_checkbox_select">
-            <select name="crimeTypes" id="crime-types">
-              <option value="Select a Crime Type">Select a Crime Type</option>
-              <option value="Select All">Select All</option>
-              <option value="ACCIDENT">Accident</option>
-              <option value="ACCIDENT WITH IMPOUND">Accident With Impound</option>
-              <option value="ASSAULT">Assault</option>
-              <option value="ASSAULT, SHOOTING">Assault, Shooting</option>
-              <option value="ASSAULT, WEAPON">Assault, Weapon</option>
-              <option value="AUTO, STOLEN">Auto, Stolen</option>
-              <option value="AUTO, STOLEN & RECOVERED">Auto, Stolen & Recovered</option>
-              <option value="B & E, COMMERCIAL">B & E, Commerical</option>
-              <option value="B & E, OTHER">B & E, Other</option>
-              <option value="B & E, RESIDENTIAL">B & E, Residential</option>
-              <option value="B & E, RESIDENTIAL (VACANT)">B & E, Residential (Vacant)</option>
-              <option value="B & E, SCHOOL">B & E, School</option>
-              <option value="B & E, VACANT">B & E, Vacant</option>
-              <option value="SEX OFFENSE">Sex Offense</option>
-              <option value="THEFT">Theft</option>
-              <option value="THEFT FROM AUTO">Theft from Auto</option>
-              <option value="VANDALISM">Vandalism</option>
-            </select>
+          <form class="main_form"></form>
+            <button type="button" id="data_load">Load Data</button>
+            <button type="button" id="data_clear">Clear Data</button>
+            <!-- map filters -->
+            <h3>Filters</h3>
+            <hr>
+            <!-- date filters -->
+            <h4>Date Range:</h4>
+            <input type="date" id="date-start" name="date-start" 
+            min="02/02/2017" max="04/13/2023">
+            <p>to</p>
+            <input type="date" id="date-end" name="date-end" 
+            min="02/02/2017" max="04/13/2023">
+            <!-- crime type filters -->
+            <h4>Crime Type:</h4>
+            <form id="crime_type_checkbox_select">
+              <select name="crimeTypes" id="crime-types">
+                <option value="Select a Crime Type">Select a Crime Type</option>
+                <option value="Select All">Select All</option>
+                <option value="ACCIDENT">Accident</option>
+                <option value="ACCIDENT WITH IMPOUND">Accident With Impound</option>
+                <option value="ASSAULT">Assault</option>
+                <option value="ASSAULT, SHOOTING">Assault, Shooting</option>
+                <option value="ASSAULT, WEAPON">Assault, Weapon</option>
+                <option value="AUTO, STOLEN">Auto, Stolen</option>
+                <option value="AUTO, STOLEN & RECOVERED">Auto, Stolen & Recovered</option>
+                <option value="B & E, COMMERCIAL">B & E, Commerical</option>
+                <option value="B & E, OTHER">B & E, Other</option>
+                <option value="B & E, RESIDENTIAL">B & E, Residential</option>
+                <option value="B & E, RESIDENTIAL (VACANT)">B & E, Residential (Vacant)</option>
+                <option value="B & E, SCHOOL">B & E, School</option>
+                <option value="B & E, VACANT">B & E, Vacant</option>
+                <option value="SEX OFFENSE">Sex Offense</option>
+                <option value="THEFT">Theft</option>
+                <option value="THEFT FROM AUTO">Theft from Auto</option>
+                <option value="VANDALISM">Vandalism</option>
+              </select>
+            </form>
+            <!-- address search -->
+            <h4>Address Search</h4>
+            <input type="text" id="address" name="address">
+            <br><hr><br>
+            <button type="button" id="generate">Generate Lst</button>
           </form>
-          <!-- address search -->
-          <h4>Address Search</h4>
-          <input type="text" id="address" name="address">
-          <br><hr><br>
-          <button type="button" id="generate">Generate Lst</button>
         </div>
         <div class="map_section">
           <!-- map -->
