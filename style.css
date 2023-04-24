@@ -152,3 +152,7 @@ p {
   border-color: #000000;
   height: 400px;
 }
+
+.hidden {
+  display: none;
+}
