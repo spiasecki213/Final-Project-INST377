@@ -27,7 +27,7 @@ function cutCrimesList(list) {
 
 /* initializes map */
 function initMap() {
-  const carto = L.map("map").setView([38.784, -76.872], 13); //PG County coords: 38.7849° N, 76.8721° W
+  const carto = L.map("map").setView([38.90, -76.871], 10); //PG County coords: 38.7849° N, 76.8721° W
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
