@@ -10,24 +10,29 @@ function injectHTML(list) {
   const target = document.querySelector("#crimes_list"); // selects text in crimes_list
   target.innerHTML = ""; // makes sure crimes_list is blank
   list.forEach((item) => {
-    const str = `<li>${item.incident_case_id}</li>`;
+    const str = `<li>${item.incident_case_id + ", " + item.date + ", " + item.clearance_code_inc_type}</li>`;
     target.innerHTML += str;
   });
 }
-
 /* cuts the list down to 20 */
 function cutCrimesList(list) {
   console.log("fired cut list");
-  const range = [...Array(20).keys()];
+  const range = [...Array(50).keys()];
   return (newArray = range.map((item) => {
     const index = getRandomIntInclusive(0, list.length - 1);
     return list[index];
   }));
 }
-
+function filterListCrimeType(list, query) {
+  return list.filter((item) => {
+    const inputCT = item.clearance_code_inc_type.toLowerCase();
+    const queryCT = query.toLowerCase();
+    return inputCT.includes(queryCT);
+  });
+}
 /* initializes map */
 function initMap() {
-  const carto = L.map("map").setView([38.90, -76.871], 10); //PG County coords: 38.7849° N, 76.8721° W
+  const carto = L.map("map").setView([38.9, -76.871], 10); //PG County coords: 38.7849° N, 76.8721° W
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
@@ -38,7 +43,7 @@ function initMap() {
 
 /* marks the coordinates on the map */
 function markerPlace(array, map) {
-  console.log("array for markers", array);
+  //console.log("array for markers", array);
 
   map.eachLayer((layer) => {
     if (layer instanceof L.Marker) {
@@ -46,14 +51,14 @@ function markerPlace(array, map) {
     }
   });
   array.forEach((item) => {
-    console.log("markerPlace", item);
+    //console.log("markerPlace", item);
     const { latitude } = item.location;
     const { longitude } = item.location;
     L.marker([latitude, longitude]).addTo(map);
   });
 }
 
-/* gets the current date */
+/* gets the current date 
 function getDate() {
   // variables
   var todaysDate = new Date();
@@ -71,17 +76,20 @@ function getDate() {
   }
 
   todaysDate = year + "-" + month + "-" + day;
-  console.log(todaysDate);
+  console.log("Today's Date: " + todaysDate);
   document.getElementById("date-start").value = todaysDate;
   document.getElementById("date-end").value = todaysDate;
 }
-
+*/
 async function mainEvent() {
-  getDate();
+  //getDate();
   const mainForm = document.querySelector(".main_form");
   const loadDataButton = document.querySelector("#data_load");
   const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
+  const crimeTypeField = document.querySelector("#crime-type");
+  //const dateField = document.querySelector("#date-start");
+  //const endDateField = document.querySelector("#date-end");
 
   const carto = initMap();
 
@@ -101,6 +109,7 @@ async function mainEvent() {
     const storedList = await results.json();
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
+    injectHTML(parsedData);
   });
 
   // generate list button
@@ -110,6 +119,27 @@ async function mainEvent() {
     console.log(currentList);
     injectHTML(currentList);
     markerPlace(currentList, carto);
+  });
+  /*
+  startDateField.addEventListener("change", (event) => {
+    console.log("input", event.target.value);
+    const sd = new Date(event.target.value).getTime();
+    console.log(sd)
+    const newList = currentList.filter((d) => {
+      const time = new Date(d.date).getTime();
+      console.log(time)
+      return (sd <= time);
+    })
+    console.log(newList);
+    injectHTML(newList);
+    markerPlace(newList, carto);
+  });
+  */
+  crimeTypeField.addEventListener("input", (event) => {
+    console.log("input", event.target.value);
+    const newList = filterListCrimeType(parsedData, event.target.value);
+    injectHTML(newList);
+    markerPlace(newList, carto);
   });
 
   // clear data button
