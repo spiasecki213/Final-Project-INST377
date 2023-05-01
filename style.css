@@ -6,6 +6,18 @@ html {
   background-color: #ffffff;
   margin: 0 8px;
   padding: 0;
+
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  /* these are specific to different browsers */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -112,8 +124,7 @@ p {
   border: 2px solid;
   border-color: #000000;
   align-items: center;
-  width: fit-content;
-  height: fit-content;
+
 }
 
 .map_section {
@@ -130,8 +141,8 @@ p {
 }
 
 #map {
-  width: 600px;
-  height: 500px;
+  width: 400px;
+  height: 300px;
   margin-bottom: 1rem;
 }
 
@@ -157,7 +168,8 @@ p {
   display: none;
 }
 
-#data_load, #generate {
+#data_load,
+#generate {
   background-color: green;
   color: white;
 }
