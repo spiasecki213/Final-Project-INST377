@@ -48,7 +48,7 @@
 
         <!-- FILTER SECTION -->
         <div class="filter_section">
-          <form class="main_form"></form>
+          <form class="main_form">
             <button type="button" id="data_load">Load Data</button>
             <button type="button" id="data_clear">Clear Data</button>
             <!-- map filters -->
@@ -95,12 +95,13 @@
             <h4>Address Search</h4>
             <input type="text" id="address" name="address">
             <br><hr><br>
+            <button type="button" id="generate">Generate List</button>
             <button type="button" id="filter">Filter List</button>
           </form>
         </div>
 
         <!-- MAP SECTION -->
-        <div class="map_section">
+        <div class="map_section hidden">
           <!-- map -->
           <div id="map" class="box"></div>
           <ol class="box" id="crimes_list">

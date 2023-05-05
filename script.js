@@ -10,7 +10,13 @@ function injectHTML(list) {
   const target = document.querySelector("#crimes_list"); // selects text in crimes_list
   target.innerHTML = ""; // makes sure crimes_list is blank
   list.forEach((item) => {
-    const str = `<li>${item.incident_case_id + ", " + item.date + ", " + item.clearance_code_inc_type}</li>`;
+    const str = `<li>${
+      item.incident_case_id +
+      ", " +
+      item.date +
+      ", " +
+      item.clearance_code_inc_type
+    }</li>`;
     target.innerHTML += str;
   });
 }
@@ -23,6 +29,7 @@ function cutCrimesList(list) {
     return list[index];
   }));
 }
+/* filters API based on parameters */
 function filterListCrimeType(list, query) {
   return list.filter((item) => {
     const inputCT = item.clearance_code_inc_type.toLowerCase();
@@ -77,18 +84,22 @@ function getDate() {
 
   todaysDate = year + "-" + month + "-" + day; // formats as a string
   console.log("Today's Date: " + todaysDate); // prints the date out to the console
-  document.getElementById("date-start").value = "2017-02-02"; 
-  document.getElementById("date-end").value = todaysDate; // sets the date inputs to equal today's date
+  document.getElementById("date-start").value = "2017-02-02";
+  //document.getElementById("date-end").value = todaysDate; // sets the date inputs to equal today's date
+  document.getElementById("date-end").value = "2017-02-28";
 }
 
 async function mainEvent() {
   getDate();
   const mainForm = document.querySelector(".main_form");
+  // buttons
   const loadDataButton = document.querySelector("#data_load");
   const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
+  const filterListButton = document.querySelector("#filter");
+  // fields
   const crimeTypeField = document.querySelector("#crime-type");
-  const dateField = document.querySelector("#date-start");
+  const startDateForm = document.querySelector(".start_date_form");
   const endDateField = document.querySelector("#date-end");
 
   const carto = initMap();
@@ -98,20 +109,22 @@ async function mainEvent() {
 
   let currentList = [];
 
-  // load data button
+  /* LOAD DATA */
   loadDataButton.addEventListener("click", async (submitEvent) => {
     console.log("Loading Data");
 
     const results = await fetch(
-      "https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$limit=150000"
-    );
+      "https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json"
+    ); // fetches the api data
+    // ?$limit=150000
 
-    const storedList = await results.json();
+    const storedList = await results.json(); // changes the response from the GET into an object/data we can use
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
+    console.table(storedList);
   });
 
-  // generate list button
+  /* GENERATE LIST */
   generateListButton.addEventListener("click", (event) => {
     console.log("generate new list");
     currentList = cutCrimesList(parsedData);
@@ -119,9 +132,13 @@ async function mainEvent() {
     injectHTML(currentList);
     markerPlace(currentList, carto);
   });
-
+/*
   startDateField.addEventListener("change", (event) => {
     console.log("input", event.target.value);
+    sd = event.target.value;
+    const newList = currentList.filter(
+      (item, index) => new Date(item.sd).getTime() >= new Date(currentList.date)
+    );
     const sd = new Date(event.target.value).getTime();
     console.log(sd)
     const newList = currentList.filter((d) => {
@@ -133,7 +150,7 @@ async function mainEvent() {
     injectHTML(newList);
     markerPlace(newList, carto);
   });
-
+*/
   crimeTypeField.addEventListener("input", (event) => {
     console.log("input", event.target.value);
     const newList = filterListCrimeType(parsedData, event.target.value);
@@ -141,7 +158,17 @@ async function mainEvent() {
     markerPlace(newList, carto);
   });
 
-  // clear data button
+  /* FILTER DATA */
+  filterListButton.addEventListener("click", (event) => {
+    console.log("Clicked Filter Button")
+    const formData = new FormData(mainForm);
+    const formProps = Object.fromEntries(formData);
+    console.log(formProps);
+
+
+  });
+
+  /* CLEAR DATA */
   clearDataButton.addEventListener("click", (event) => {
     console.log("clear browser data");
     localStorage.clear();
