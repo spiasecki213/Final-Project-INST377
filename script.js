@@ -58,13 +58,13 @@ function markerPlace(array, map) {
   });
 }
 
-/* gets the current date 
+/* gets the current date */
 function getDate() {
   // variables
-  var todaysDate = new Date();
-  var day = todaysDate.getDate();
-  var month = todaysDate.getMonth() + 1;
-  var year = todaysDate.getFullYear();
+  var todaysDate = new Date(); // gets the current date
+  var day = todaysDate.getDate(); // gets the day from the current date
+  var month = todaysDate.getMonth() + 1; // gets the month from the current date
+  var year = todaysDate.getFullYear(); // gets the year from the current date
 
   // if date # is less than 10, add a '0' in front of the number
   if (day < 10) {
@@ -75,21 +75,21 @@ function getDate() {
     month = "0" + month;
   }
 
-  todaysDate = year + "-" + month + "-" + day;
-  console.log("Today's Date: " + todaysDate);
-  document.getElementById("date-start").value = todaysDate;
-  document.getElementById("date-end").value = todaysDate;
+  todaysDate = year + "-" + month + "-" + day; // formats as a string
+  console.log("Today's Date: " + todaysDate); // prints the date out to the console
+  document.getElementById("date-start").value = "2017-02-02"; 
+  document.getElementById("date-end").value = todaysDate; // sets the date inputs to equal today's date
 }
-*/
+
 async function mainEvent() {
-  //getDate();
+  getDate();
   const mainForm = document.querySelector(".main_form");
   const loadDataButton = document.querySelector("#data_load");
   const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
   const crimeTypeField = document.querySelector("#crime-type");
-  //const dateField = document.querySelector("#date-start");
-  //const endDateField = document.querySelector("#date-end");
+  const dateField = document.querySelector("#date-start");
+  const endDateField = document.querySelector("#date-end");
 
   const carto = initMap();
 
@@ -103,13 +103,12 @@ async function mainEvent() {
     console.log("Loading Data");
 
     const results = await fetch(
-      "https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json"
+      "https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$limit=150000"
     );
 
     const storedList = await results.json();
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
-    injectHTML(parsedData);
   });
 
   // generate list button
@@ -120,7 +119,7 @@ async function mainEvent() {
     injectHTML(currentList);
     markerPlace(currentList, carto);
   });
-  /*
+
   startDateField.addEventListener("change", (event) => {
     console.log("input", event.target.value);
     const sd = new Date(event.target.value).getTime();
@@ -134,7 +133,7 @@ async function mainEvent() {
     injectHTML(newList);
     markerPlace(newList, carto);
   });
-  */
+
   crimeTypeField.addEventListener("input", (event) => {
     console.log("input", event.target.value);
     const newList = filterListCrimeType(parsedData, event.target.value);
