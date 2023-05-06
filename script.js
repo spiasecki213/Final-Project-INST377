@@ -106,7 +106,7 @@ async function mainEvent() {
   const generateListButton = document.querySelector("#generate");
   const filterListButton = document.querySelector("#filter");
   // fields
-  const crimeTypeField = document.querySelector("#crime-type");
+  const crimeTypeField = document.querySelector("#crime_type");
 
   const carto = initMap();
 
@@ -157,6 +157,7 @@ async function mainEvent() {
       formProps.date_end
     );
     console.log(formProps);
+
     injectHTML(newList);
   });
   /* CLEAR DATA */
