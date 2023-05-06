@@ -114,6 +114,7 @@ async function mainEvent() {
   let parsedData = JSON.parse(storedData);
 
   let currentList = [];
+  let newList = [];
 
   /* LOAD DATA */
   loadDataButton.addEventListener("click", async (submitEvent) => {
@@ -138,26 +139,23 @@ async function mainEvent() {
     markerPlace(currentList, carto);
   });
 
-  crimeTypeField.addEventListener("input", (event) => {
-    console.log("input", event.target.value);
-    const newList = filterListCrimeType(parsedData, event.target.value);
-    injectHTML(newList);
-    markerPlace(newList, carto);
-  });
-
   /* FILTER DATA */
   filterListButton.addEventListener("click", (event) => {
     console.log("Clicked Filter Button");
     const formData = new FormData(mainForm);
     const formProps = Object.fromEntries(formData);
     /* Filter by Date */
-    const newList = filterList(
+    newList = filterList(
       parsedData,
       formProps.date_start,
       formProps.date_end
     );
     console.log(formProps);
-
+    if (newList?.length > 0){
+      newList = filterListCrimeType(newList, formProps.crime_type);
+    } else {
+      newList = filterListCrimeType(parsedData, formProps.crime_type);
+    }
     injectHTML(newList);
   });
   /* CLEAR DATA */
