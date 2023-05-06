@@ -84,11 +84,16 @@ function getDate() {
 
   todaysDate = year + "-" + month + "-" + day; // formats as a string
   console.log("Today's Date: " + todaysDate); // prints the date out to the console
-  document.getElementById("date-start").value = "2017-02-02";
+  document.getElementById("date_start").value = "2017-02-02";
   //document.getElementById("date-end").value = todaysDate; // sets the date inputs to equal today's date
-  document.getElementById("date-end").value = "2017-02-28";
+  document.getElementById("date_end").value = "2017-02-28";
 }
 
+function filterList(list, startQuery, endQuery){
+  return list.filter((item) => {
+    return new Date(item.date) >= new Date(startQuery) && new Date(item.date) <= new Date(endQuery);
+  })
+}
 async function mainEvent() {
   getDate();
   const mainForm = document.querySelector(".main_form");
@@ -121,7 +126,6 @@ async function mainEvent() {
     const storedList = await results.json(); // changes the response from the GET into an object/data we can use
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
-    console.table(storedList);
   });
 
   /* GENERATE LIST */
@@ -163,9 +167,13 @@ async function mainEvent() {
     console.log("Clicked Filter Button")
     const formData = new FormData(mainForm);
     const formProps = Object.fromEntries(formData);
-    console.log(formProps);
-
-
+    /* Filter by Date */
+    // console.log("Form Data: ", formProps);
+    //console.log("Current List: ", parsedData);
+    //console.log("Starting Date: ", new Date(formProps.date_start));
+    const newList = filterList(parsedData, formProps.date_start, formProps.date_end);
+    //console.log(newList);
+    injectHTML(newList);
   });
 
   /* CLEAR DATA */
