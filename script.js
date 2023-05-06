@@ -89,10 +89,13 @@ function getDate() {
   document.getElementById("date_end").value = "2017-02-28";
 }
 
-function filterList(list, startQuery, endQuery){
+function filterList(list, startQuery, endQuery) {
   return list.filter((item) => {
-    return new Date(item.date) >= new Date(startQuery) && new Date(item.date) <= new Date(endQuery);
-  })
+    return (
+      new Date(item.date) >= new Date(startQuery) &&
+      new Date(item.date) <= new Date(endQuery)
+    );
+  });
 }
 async function mainEvent() {
   getDate();
@@ -144,14 +147,18 @@ async function mainEvent() {
 
   /* FILTER DATA */
   filterListButton.addEventListener("click", (event) => {
-    console.log("Clicked Filter Button")
+    console.log("Clicked Filter Button");
     const formData = new FormData(mainForm);
     const formProps = Object.fromEntries(formData);
     /* Filter by Date */
-    const newList = filterList(parsedData, formProps.date_start, formProps.date_end);
+    const newList = filterList(
+      parsedData,
+      formProps.date_start,
+      formProps.date_end
+    );
+    console.log(formProps);
     injectHTML(newList);
   });
-
   /* CLEAR DATA */
   clearDataButton.addEventListener("click", (event) => {
     console.log("clear browser data");
