@@ -104,8 +104,6 @@ async function mainEvent() {
   const filterListButton = document.querySelector("#filter");
   // fields
   const crimeTypeField = document.querySelector("#crime-type");
-  const startDateForm = document.querySelector(".start_date_form");
-  const endDateField = document.querySelector("#date-end");
 
   const carto = initMap();
 
@@ -136,25 +134,7 @@ async function mainEvent() {
     injectHTML(currentList);
     markerPlace(currentList, carto);
   });
-/*
-  startDateField.addEventListener("change", (event) => {
-    console.log("input", event.target.value);
-    sd = event.target.value;
-    const newList = currentList.filter(
-      (item, index) => new Date(item.sd).getTime() >= new Date(currentList.date)
-    );
-    const sd = new Date(event.target.value).getTime();
-    console.log(sd)
-    const newList = currentList.filter((d) => {
-      const time = new Date(d.date).getTime();
-      console.log(time)
-      return (sd <= time);
-    })
-    console.log(newList);
-    injectHTML(newList);
-    markerPlace(newList, carto);
-  });
-*/
+
   crimeTypeField.addEventListener("input", (event) => {
     console.log("input", event.target.value);
     const newList = filterListCrimeType(parsedData, event.target.value);
@@ -168,11 +148,7 @@ async function mainEvent() {
     const formData = new FormData(mainForm);
     const formProps = Object.fromEntries(formData);
     /* Filter by Date */
-    // console.log("Form Data: ", formProps);
-    //console.log("Current List: ", parsedData);
-    //console.log("Starting Date: ", new Date(formProps.date_start));
     const newList = filterList(parsedData, formProps.date_start, formProps.date_end);
-    //console.log(newList);
     injectHTML(newList);
   });
 
