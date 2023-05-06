@@ -49,6 +49,7 @@
         <!-- FILTER SECTION -->
         <div class="filter_section">
           <form class="main_form">
+            <!-- main buttons -->
             <button type="button" id="data_load">Load Data</button>
             <button type="button" id="data_clear">Clear Data</button>
             <!-- map filters -->
@@ -61,9 +62,16 @@
             <p>to</p>
             <input type="date" id="date_end" name="date_end" 
             min="02/02/2017" max="date_end">
-            
             <!-- crime type filters -->
             <h4>Crime Type:</h4>
+            <input type="checkbox" id="cbox_all" name="cbox_all" value="Select All">
+            <label for="cbox_all">Select All</label><br>
+            <input type="checkbox" id="cbox_ac" name="cbox_cc" value="ACCIDENT">
+            <label for="cbox_ac">Accident</label><br>
+            <input type="checkbox" id="cbox_acim" name="cbox_acim" value="ACCIDENT WITH IMPOUND">
+            <label for="cbox_acim">Accident with Impound</label><br>
+            <input type="checkbox" id="cbox_as" name="cbox_as" value="ASSAULT">
+            <label for="cbox_as">Assault</label>
             <!--
             <form id="crime_type_checkbox_select">
               <select name="crimeTypes" id="crime_types">
