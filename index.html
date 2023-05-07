@@ -7,15 +7,15 @@
     
     <title>Sam's INST377 Final Project</title>
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" /> <!-- my CSS page -->
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    crossorigin=""/> <!-- Leaflet CSS -->
+
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
+    crossorigin=""></script> <!-- Leaflet Script -->
   </head>
   <body>
     <!-- wrapper -->
@@ -48,10 +48,10 @@
         <!-- FILTER SECTION -->
         <div class="filter_section">
           <form class="main_form">
-            <!-- main buttons -->
+            <!-- Top Buttons -->
             <button type="button" id="data_load">Load Data</button>
             <button type="button" id="data_clear">Clear Data</button>
-            <!-- map filters -->
+            <!-- Filters -->
             <h3>Filters</h3>
             <hr>
             <!-- date filters -->
@@ -102,6 +102,7 @@
             <h4>Address Search</h4>
             <input type="text" id="address" name="address">
             <br><hr><br>
+            <!-- Buttom Buttons -->
             <button type="button" id="generate">Generate List</button>
             <button type="button" id="filter">Filter List</button>
           </form>
