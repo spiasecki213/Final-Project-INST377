@@ -159,6 +159,11 @@ async function mainEvent() {
     }
     injectHTML(newList);
     markerPlace(newList, carto);
+
+    /* Filter by Crime Type */
+
+    /* Filter by Address */
+    
   });
   /* CLEAR DATA */
   clearDataButton.addEventListener("click", (event) => {
