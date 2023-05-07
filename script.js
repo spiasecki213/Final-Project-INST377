@@ -142,14 +142,15 @@ async function mainEvent() {
   /* FILTER DATA */
   filterListButton.addEventListener("click", (event) => {
     console.log("Clicked Filter Button");
-    const formData = new FormData(mainForm);
-    const formProps = Object.fromEntries(formData);
+    const formData = new FormData(mainForm); // turns the HTML form into a FormData object
+    const formProps = Object.fromEntries(formData); // creates an object from all entries
+    
     /* Filter by Date */
     newList = filterList(
       parsedData,
       formProps.date_start,
       formProps.date_end
-    );
+    ); // uses filterList function to filter the list using start and end dates from mainForm
     console.log(formProps);
     if (newList?.length > 0){
       newList = filterListCrimeType(newList, formProps.crime_type);
@@ -157,6 +158,7 @@ async function mainEvent() {
       newList = filterListCrimeType(parsedData, formProps.crime_type);
     }
     injectHTML(newList);
+    markerPlace(newList, carto);
   });
   /* CLEAR DATA */
   clearDataButton.addEventListener("click", (event) => {
