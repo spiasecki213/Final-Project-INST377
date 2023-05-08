@@ -51,17 +51,20 @@
             <!-- Top Buttons -->
             <button type="button" id="data_load">Load Data</button>
             <button type="button" id="data_clear">Clear Data</button>
+
             <!-- Filters -->
             <h3>Filters</h3>
             <hr>
-            <!-- date filters -->
+            
+            <!-- Date -->
             <h4>Date Range:</h4>
             <input type="date" id="date_start" name="date_start" 
             min="02/02/2017" max="date_end">
             <p>to</p>
             <input type="date" id="date_end" name="date_end" 
             min="02/02/2017" max="date_end">
-            <!-- crime type filters -->
+            
+            <!-- Crime Type -->
             <h4>Crime Type:</h4>
             <label for="r1"><input type="radio" name="crime_type" value="Select All" id="r1">Select All</label><br>
             <label for="r2"><input type="radio" name="crime_type" value="ACCIDENT" id="r2">Accident</label><br>
@@ -81,36 +84,13 @@
             <label for="r16"><input type="radio" name="crime_type" value="THEFT" id="r16">Theft</label><br>
             <label for="r17"><input type="radio" name="crime_type" value="THEFT FROM AUTO" id="r17">Theft from Auto</label><br>
             <label for="r18"><input type="radio" name="crime_type" value="VANDALISM" id="r18">Vandalism</label><br>
-            <!--
-            <form id="crime_type_checkbox_select">
-              <select name="crimeTypes" id="crime_types">
-                <option value="Select a Crime Type">Select a Crime Type</option>
-                <option value="Select All">Select All</option>
-                <option value="ACCIDENT">Accident</option>
-                <option value="ACCIDENT WITH IMPOUND">Accident With Impound</option>
-                <option value="ASSAULT">Assault</option>
-                <option value="ASSAULT, SHOOTING">Assault, Shooting</option>
-                <option value="ASSAULT, WEAPON">Assault, Weapon</option>
-                <option value="AUTO, STOLEN">Auto, Stolen</option>
-                <option value="AUTO, STOLEN & RECOVERED">Auto, Stolen & Recovered</option>
-                <option value="B & E, COMMERCIAL">B & E, Commerical</option>
-                <option value="B & E, OTHER">B & E, Other</option>
-                <option value="B & E, RESIDENTIAL">B & E, Residential</option>
-                <option value="B & E, RESIDENTIAL (VACANT)">B & E, Residential (Vacant)</option>
-                <option value="B & E, SCHOOL">B & E, School</option>
-                <option value="B & E, VACANT">B & E, Vacant</option>
-                <option value="SEX OFFENSE">Sex Offense</option>
-                <option value="THEFT">Theft</option>
-                <option value="THEFT FROM AUTO">Theft from Auto</option>
-                <option value="VANDALISM">Vandalism</option>
-              </select>
-            </form>
-            -->
             
-            <!-- address search -->
+            <!-- Address -->
             <h4>Address Search</h4>
-            <input type="text" id="address" name="address">
+            <input type="text" id="lat" name="lat">
+            <input type="text" id="long" name="long">
             <br><hr><br>
+
             <!-- Buttom Buttons -->
             <button type="button" id="generate">Generate List</button>
             <button type="button" id="filter">Filter List</button>

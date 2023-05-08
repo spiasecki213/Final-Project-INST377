@@ -102,7 +102,7 @@ function filterDate(list, startQuery, endQuery) {
   });
 }
 
-/* filters based on the checkboxes */
+/* filters based on the radio buttons */
 function filterCrimeType(list, query) {
   const radioBtns = document.querySelectorAll('input[name="crime_type"]');
   let selectedCrimeType;
@@ -115,6 +115,11 @@ function filterCrimeType(list, query) {
   return list.filter((item) => {
     return(item.clearance_code_inc_type) === (selectedCrimeType);
   })
+}
+
+/* filters based on the lat/long input */
+function filterAddress(list) {
+  return "none";
 }
 
 async function mainEvent() {
@@ -170,12 +175,12 @@ async function mainEvent() {
     
     /* Filter by Date */
     newList = filterDate(parsedData, formProps.date_start, formProps.date_end); // uses filterList function to filter the list using start and end dates from mainForm
-    //console.log(formProps);
 
     /* Filter by Crime Type */
     newList = filterCrimeType(newList, formProps.crime_type)
 
     /* Filter by Address */
+
 
     injectHTML(newList);
     markerPlace(newList, carto);
