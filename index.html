@@ -63,14 +63,14 @@
             min="02/02/2017" max="date_end">
             <!-- crime type filters -->
             <h4>Crime Type:</h4>
-            <input type="checkbox" id="cbox_all" name="cbox_all" value="Select All">
-            <label for="cbox_all">Select All</label><br>
-            <input type="checkbox" id="cbox_ac" name="cbox_cc" value="ACCIDENT">
-            <label for="cbox_ac">Accident</label><br>
-            <input type="checkbox" id="cbox_acim" name="cbox_acim" value="ACCIDENT WITH IMPOUND">
-            <label for="cbox_acim">Accident with Impound</label><br>
-            <input type="checkbox" id="cbox_as" name="cbox_as" value="ASSAULT">
-            <label for="cbox_as">Assault</label>
+            <label for="c1"><input type="radio" name="crime_type" 
+              value="Select All" id="c1">Select All</label><br>
+            <label for="c2"><input type="radio" name="crime_type" 
+              value="ACCIDENT" id="c2">Accident</label><br>
+            <label for="c3"><input type="radio" name="crime_type" 
+              value="ACCIDENT WITH IMPOUND" id="c3">Accident with Impound</label><br>
+            <label for="c4"><input type="radio" name="crime_type" 
+              value="ASSAULT" id="c4">Assault</label><br>
             <!--
             <form id="crime_type_checkbox_select">
               <select name="crimeTypes" id="crime_types">
@@ -96,7 +96,6 @@
               </select>
             </form>
             -->
-            <input type="text" id="crime_type" name="crime_type">
             
             <!-- address search -->
             <h4>Address Search</h4>

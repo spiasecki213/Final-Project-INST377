@@ -20,6 +20,7 @@ function injectHTML(list) {
     target.innerHTML += str;
   });
 }
+
 /* cuts the list down to 20 */
 function cutCrimesList(list) {
   console.log("fired cut list");
@@ -29,6 +30,7 @@ function cutCrimesList(list) {
     return list[index];
   }));
 }
+
 /* filters API based on parameters */
 function filterListCrimeType(list, query) {
   return list.filter((item) => {
@@ -37,6 +39,7 @@ function filterListCrimeType(list, query) {
     return inputCT.includes(queryCT);
   });
 }
+
 /* initializes map */
 function initMap() {
   const carto = L.map("map").setView([38.9, -76.871], 10); //PG County coords: 38.7849° N, 76.8721° W
@@ -89,7 +92,8 @@ function getDate() {
   document.getElementById("date_end").value = "2017-02-28";
 }
 
-function filterList(list, startQuery, endQuery) {
+/* filters based on the start and end date */
+function filterDate(list, startQuery, endQuery) {
   return list.filter((item) => {
     return (
       new Date(item.date) >= new Date(startQuery) &&
@@ -97,6 +101,22 @@ function filterList(list, startQuery, endQuery) {
     );
   });
 }
+
+/* filters based on the checkboxes */
+function filterCrimeType(list, query) {
+  const radioBtns = document.querySelectorAll('input[name="crime_type"]');
+  let selectedCrimeType;
+  for (const radioBtn of radioBtns) {
+    if (radioBtn.checked) {
+      selectedCrimeType = radioBtn.value;
+      break;
+    }
+  }
+  return list.filter((item) => {
+    return(item.clearance_code_inc_type) === (selectedCrimeType);
+  })
+}
+
 async function mainEvent() {
   getDate();
   const mainForm = document.querySelector(".main_form");
@@ -105,14 +125,15 @@ async function mainEvent() {
   const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
   const filterListButton = document.querySelector("#filter");
-  // fields
-  const crimeTypeField = document.querySelector("#crime_type");
 
+  // map
   const carto = initMap();
 
+  // localStorage
   const storedData = localStorage.getItem("storedData");
   let parsedData = JSON.parse(storedData);
 
+  // list arrays
   let currentList = [];
   let newList = [];
 
@@ -144,26 +165,20 @@ async function mainEvent() {
     console.log("Clicked Filter Button");
     const formData = new FormData(mainForm); // turns the HTML form into a FormData object
     const formProps = Object.fromEntries(formData); // creates an object from all entries
+    console.log(formProps);
+    console.log("Crime Types: ", formProps.crime_type);
     
     /* Filter by Date */
-    newList = filterList(
-      parsedData,
-      formProps.date_start,
-      formProps.date_end
-    ); // uses filterList function to filter the list using start and end dates from mainForm
-    console.log(formProps);
-    if (newList?.length > 0){
-      newList = filterListCrimeType(newList, formProps.crime_type);
-    } else {
-      newList = filterListCrimeType(parsedData, formProps.crime_type);
-    }
-    injectHTML(newList);
-    markerPlace(newList, carto);
+    newList = filterDate(parsedData, formProps.date_start, formProps.date_end); // uses filterList function to filter the list using start and end dates from mainForm
+    //console.log(formProps);
 
     /* Filter by Crime Type */
+    newList = filterCrimeType(newList, formProps.crime_type)
 
     /* Filter by Address */
-    
+
+    injectHTML(newList);
+    markerPlace(newList, carto);
   });
   /* CLEAR DATA */
   clearDataButton.addEventListener("click", (event) => {
