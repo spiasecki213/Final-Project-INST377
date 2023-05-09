@@ -39,12 +39,24 @@ body {
 h1,
 h2,
 h3,
-h4,
 h5,
 h6 {
   color: #000000;
   text-align: center;
   padding: 0rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  text-align: center;
+  padding: 0rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  
+  color:#000;
+  background-color: #00357a;
 }
 
 p {
@@ -138,13 +150,23 @@ p {
 .filter_section {
   flex: 0 1 auto;
   margin: 1rem;
-  padding: 1.5rem;
+  padding: 1rem;
   align-items: center;
 
   background-color: #B3D6F2;
   color: #000000;
   border: 2px solid;
   border-color: #474746;
+}
+
+.filter_section .date_label {
+  font-size: 14px;
+  font-style: italic;
+  color: #474746;
+}
+
+#date_start, #date_end {
+  display: flex;
 }
 
 .map_section {
