@@ -132,7 +132,7 @@ p {
 
 .nav a {
   text-decoration: none;
-  color: #474747;
+  color: #f7f7f7;
 }
 
 /* ##########  Page Layout/Content  ########## */
@@ -222,10 +222,27 @@ p {
   height: 400px;
 }
 
-#data_load,
+#data_refresh,
 #filter {
-  background-color: green;
+  display: block;
+  margin: 0 auto;
+  height: 50px;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+
+  background-color: #6096BA;
   color: white;
+  font-size: 24px;
+  font-weight: bold;
+  
+  -webkit-text-stroke: 0.5px black;
+}
+
+#data_refresh:hover,
+#filter:hover {
+  background-color: #3fb565;
 }
 
 /* Media Query For Small Screens */
@@ -233,7 +250,7 @@ p {
   /* Rules in here will only apply when a screen is the correct size */
   /* check it out by using your developer tools to shrink your screen-size */
   .container {
-    background-color: rgba(204, 8, 162, 0.65);
+    /* background-color: rgba(204, 8, 162, 0.65); */
     flex-direction: column;
     justify-content: center;
     align-items: center;
