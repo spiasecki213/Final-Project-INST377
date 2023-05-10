@@ -1,9 +1,3 @@
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
-}
-
 /* injects the list into HTML */
 function injectHTML(list) {
   console.log("fired indexHTML");
@@ -11,24 +5,60 @@ function injectHTML(list) {
   target.innerHTML = ""; // makes sure crimes_list is blank
   list.forEach((item) => {
     const str = `<li>${
-      item.incident_case_id +
-      ", " +
-      item.date +
-      ", " +
+      "ID: " + 
+      item.incident_case_id + "<br>" +
+      "Date: " +
+      formatMonth(item.date.substring(5,7)) + " " + formatDay(item.date.substring(8,10)) + ", " + item.date.substring(0,4) + "<br>" +
+      "Crime Type: " +
       item.clearance_code_inc_type
     }</li>`;
     target.innerHTML += str;
   });
 }
 
-/* cuts the list down to 20 */
-function cutCrimesList(list) {
-  console.log("fired cut list");
-  const range = [...Array(50).keys()];
-  return (newArray = range.map((item) => {
-    const index = getRandomIntInclusive(0, list.length - 1);
-    return list[index];
-  }));
+/* formats the month by taking the numerical
+day and replacing it with the corresponding
+abbreviated month */
+function formatMonth(month, day) {
+  month = String(month);
+  if(String(month) == "01"){
+    return("Jan");
+  } else if(String(month) == "02") {
+    return("Feb");
+  } else if(String(month) == "03") {
+    return("Mar");
+  } else if(String(month) == "04") {
+    return("Apr");
+  } else if(String(month) == "05") {
+    return("May");
+  } else if(String(month) == "06") {
+    return("Jun");
+  } else if(String(month) == "07") {
+    return("Jul");
+  } else if(String(month) == "08") {
+    return("Aug");
+  } else if(String(month) == "09") {
+    return("Sept");
+  } else if(String(month) == "10") {
+    return("Oct");
+  } else if(moString(month) == "11") {
+    return("Nov");
+  } else if(String(month) == "12") {
+    return("Dec");
+  } else {
+    month == month;
+  }
+}
+
+/* formats the day to omit the 0 if the
+day is one digit */
+function formatDay(day) {
+  if(String(day).substring(0,1) == "0"){
+    return(day.substring(1));
+  }
+  else {
+    return day;
+  }
 }
 
 /* initializes map */
@@ -130,7 +160,6 @@ async function mainEvent() {
   // buttons
   const loadDataButton = document.querySelector("#data_load");
   const clearDataButton = document.querySelector("#data_clear");
-  const generateListButton = document.querySelector("#generate");
   const filterListButton = document.querySelector("#filter");
 
   // map
@@ -156,15 +185,6 @@ async function mainEvent() {
     const storedList = await results.json(); // changes the response from the GET into an object/data we can use
     localStorage.setItem("storedData", JSON.stringify(storedList));
     parsedData = storedList;
-  });
-
-  /* GENERATE LIST */
-  generateListButton.addEventListener("click", (event) => {
-    console.log("generate new list");
-    currentList = cutCrimesList(parsedData);
-    console.log(currentList);
-    injectHTML(currentList);
-    markerPlace(currentList, carto);
   });
 
   /* FILTER DATA */
