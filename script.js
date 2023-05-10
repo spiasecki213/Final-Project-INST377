@@ -115,9 +115,9 @@ function filterAddress(map, lat, long) {
     long = -76.871;
   } // checks if the lat/long filters are blank and doesn't change anything if they are empty
   else {
-    let llMarker = new L.marker([lat, long]);
     var llLayer = new L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png");
-    map.addLayer(llLayer);
+    llLayer.addTo(map)
+    var llMarker = new L.marker([lat, long]);
     llMarker.bindPopup("Your Address").openPopup();
     llMarker.addTo(map)
     map.panTo([lat, long], 10);
@@ -149,7 +149,7 @@ async function mainEvent() {
     console.log("Loading Data");
 
     const results = await fetch(
-      "https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?sort=DESC"
+      "https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?$order=date DESC"
     ); // fetches the api data
     // ?$limit=150000
 
