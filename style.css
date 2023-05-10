@@ -183,6 +183,31 @@ p {
   border-color: #000000;
 }
 
+#map {
+  width: 400px;
+  height: 300px;
+  margin-bottom: 1rem;
+}
+
+.display_list li{
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin: 0 auto;
+
+  background-color: #f7f7f7;
+
+  border: 2px solid;
+  border-radius: 4px;
+  border-color: #474746;
+}
+
+.display_list li{
+  font-style: italic;
+}
+
 .about_section {
   background-color: #ffffff;
   color: #000000;
@@ -197,15 +222,8 @@ p {
   height: 400px;
 }
 
-
-#map {
-  width: 400px;
-  height: 300px;
-  margin-bottom: 1rem;
-}
-
 #data_load,
-#generate {
+#filter {
   background-color: green;
   color: white;
 }
