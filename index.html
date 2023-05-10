@@ -39,8 +39,7 @@
         <div class="filter_section">
           <form class="main_form">
             <!-- Top Buttons -->
-            <button type="button" id="data_load">Load Data</button>
-            <button type="button" id="data_clear">Clear Data</button>
+            <button type="button" id="data_refresh">Refresh Data</button>
 
             <!-- Filters -->
             <h3>Filters</h3>
@@ -55,7 +54,7 @@
             
             <!-- Crime Type -->
             <h4>Crime Type:</h4>
-            <label for="r1"><input type="radio" name="crime_type" value="Select All" id="r1">Select All</label><br>
+            <label for="r1"><input type="radio" name="crime_type" value="Select All" id="r1" checked>Select All</label><br>
             <label for="r2"><input type="radio" name="crime_type" value="ACCIDENT" id="r2">Accident</label><br>
             <label for="r3"><input type="radio" name="crime_type" value="ACCIDENT WITH IMPOUND" id="r3">Accident with Impound</label><br>
             <label for="r4"><input type="radio" name="crime_type" value="ASSAULT" id="r4">Assault</label><br>
@@ -90,7 +89,7 @@
           <!-- map -->
           <div id="map" class="box"></div>
           <ol class="box display_list" id="crimes_list">
-            List of crimes based on your filters
+            <p>List of crimes based on your filters</p>
           </ol>
         </div>
       </div>
