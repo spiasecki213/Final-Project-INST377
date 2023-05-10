@@ -63,6 +63,12 @@ p {
   color: #000000;
 }
 
+img {
+  margin-top: 0.5rem;
+  width: 50%;
+  height: 50%;
+}
+
 .hidden {
   display: none;
 }
