@@ -31,20 +31,11 @@ function cutCrimesList(list) {
   }));
 }
 
-/* filters API based on parameters */
-function filterListCrimeType(list, query) {
-  return list.filter((item) => {
-    const inputCT = item.clearance_code_inc_type.toLowerCase();
-    const queryCT = query.toLowerCase();
-    return inputCT.includes(queryCT);
-  });
-}
-
 /* initializes map */
 function initMap() {
   const carto = L.map("map").setView([38.9, -76.871], 10); //PG County coords: 38.7849° N, 76.8721° W
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 19,
+    maxZoom: 25,
     attribution:
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(carto);
@@ -89,7 +80,7 @@ function getDate() {
   console.log("Today's Date: " + todaysDate); // prints the date out to the console
   document.getElementById("date_start").value = "2017-02-02";
   //document.getElementById("date-end").value = todaysDate; // sets the date inputs to equal today's date
-  document.getElementById("date_end").value = "2017-02-28";
+  document.getElementById("date_end").value = todaysDate;
 }
 
 /* filters based on the start and end date */
@@ -118,8 +109,19 @@ function filterCrimeType(list, query) {
 }
 
 /* filters based on the lat/long input */
-function filterAddress(list) {
-  return "none";
+function filterAddress(map, lat, long) {
+  if (lat == '' && long == ''){ 
+    lat = 38.9;
+    long = -76.871;
+  } // checks if the lat/long filters are blank and doesn't change anything if they are empty
+  else {
+    let llMarker = new L.marker([lat, long]);
+    var llLayer = new L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png");
+    map.addLayer(llLayer);
+    llMarker.bindPopup("Your Address").openPopup();
+    llMarker.addTo(map)
+    map.panTo([lat, long], 10);
+  }
 }
 
 async function mainEvent() {
@@ -147,7 +149,7 @@ async function mainEvent() {
     console.log("Loading Data");
 
     const results = await fetch(
-      "https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json"
+      "https://data.princegeorgescountymd.gov/resource/wb4e-w4nf.json?sort=DESC"
     ); // fetches the api data
     // ?$limit=150000
 
@@ -180,6 +182,9 @@ async function mainEvent() {
     newList = filterCrimeType(newList, formProps.crime_type)
 
     /* Filter by Address */
+    formLat = formProps.lat;
+    formLong = formProps.long;
+    filterAddress(carto, formLat, formLong);
 
 
     injectHTML(newList);
