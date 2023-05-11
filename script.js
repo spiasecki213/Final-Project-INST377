@@ -95,7 +95,19 @@ function markerPlace(array, map) {
     //console.log("markerPlace", item);
     const { latitude } = item.location;
     const { longitude } = item.location;
-    L.marker([latitude, longitude]).addTo(map);
+    L.marker([latitude, longitude])
+    .addTo(map)
+    .bindPopup(
+      "ID: " +
+        item.incident_case_id +
+        "<br>" +
+        "Date: " +
+        formatMonth(item.date.substring(5, 7)) +
+        " " +
+        formatDay(item.date.substring(8, 10)) +
+        ", " +
+        item.date.substring(0, 4)
+    );
   });
 }
 
@@ -155,19 +167,18 @@ function filterCrimeType(list, query) {
 
 /* filters based on the lat/long input */
 function filterAddress(map, lat, long) {
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
   if (lat == "" && long == "") {
     lat = 38.9;
     long = -76.871;
   } // checks if the lat/long filters are blank and doesn't change anything if they are empty
   else {
-    var llLayer = new L.tileLayer(
-      "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-    );
-    llLayer.addTo(map);
-    var llMarker = new L.marker([lat, long]);
-    llMarker.bindPopup("Your Address").openPopup();
-    llMarker.addTo(map);
-    map.panTo([lat, long], 10);
+    L.marker([lat, long]).addTo(map).bindPopup("Your Address").openPopup();
+    map.setView([lat, long], 11);
   }
 }
 
