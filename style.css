@@ -109,7 +109,7 @@ p {
 }
 
 .logo img {
-  max-width: 70%;
+  max-width: 40%;
   height: auto;
 
 }
@@ -278,6 +278,11 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .logo img {
+    max-width: 80%;
+    height: auto;
+  
   }
   
 }
