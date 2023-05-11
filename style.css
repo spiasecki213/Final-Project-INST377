@@ -97,77 +97,61 @@ p {
 /*    Header/Nav Bar     */
 /*************************/
 .header {
-  padding-top: 0rem;
-  padding-left: 1rem;
-  padding-right: 2rem;
-  padding-bottom: 0rem;
-  width: 100%;
-  overflow: hidden;
-
   background-color: #00357a;
-  border: 2px solid;
-  border-color: #00357a;
-  text-align: center;
-  height: 110px;
-
+  display: flex;
+  align-items: center;
+  padding: 10px;
   box-shadow: 0 1em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 
-#logo {
-  float: left;
-  margin: none;
-  margin-bottom: 1.5rem;
-  width: 30%;
-  height: 100%;
+.logo {
+  margin-right: 50px;
 }
 
-#logo img {
-  width: 100%;
-  padding-bottom: 1rem;
-  float: left;
-  padding: 20px 10px;
+.logo img {
+  max-width: 70%;
+  height: auto;
+
 }
 
-#nav_bar {
-  float: right;
-  margin: none;
-  width: 70%;
-  height: 100%;
+.nav_bar ul{
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-#nav_bar ul {
-  float: right;
-  padding: none;
-  margin: none;
-
-  text-align: center;
-}
-
-#nav_bar li {
-  display: inline-block;
+.nav_bar li {
+  margin-right: 10px;
   padding: 0.5em 1em;
-
-  text-transform: uppercase;
-  line-height: 20px;
+  max-width: 100%;
+  min-width: 70%;
+  text-align: center;
+  list-style: none;
   font-weight: bold;
+  font-size: 18px;
   box-shadow: 0 1em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
   background-color: #6096BA;
-  font-size: 18px;
 }
 
-#nav_bar li a{
-  display: inline-block;
-  padding: 0em 1em;
-  text-decoration: none;
+.nav_bar li:last-child {
+  margin-right: 0;
+}
+
+.nav_bar li a {
   font-weight: bold;
   text-transform: uppercase;
-
-  text-decoration: none;
-  color: #f7f7f7;
   -webkit-text-stroke: 0.5px black;
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
-#nav_bar li:hover a, #nav_bar li:hover {
+.nav_bar li:hover {
+  background-color: #3fb565;
+}
+
+.nav_bar li:hover a {
   background-color: #3fb565;
 }
 
