@@ -41,7 +41,6 @@ body {
 h1,
 h2,
 h3,
-h5,
 h6 {
   color: #000000;
   text-align: center;
@@ -59,6 +58,11 @@ h4 {
   
   color:#ffffff;
   background-color: #00357a;
+}
+
+h5 {
+  padding-top: 1px;
+  font-size: 16px;
 }
 
 p {
@@ -243,7 +247,7 @@ p {
 }
 
 .about_section {
-  background-color: #ffffff;
+  background-color: #B3D6F2;
   color: #000000;
   flex: 1 1 auto;
   margin: 1rem;
@@ -253,7 +257,6 @@ p {
   flex-direction: column;
   border: 4px solid;
   border-color: #000000;
-  height: 400px;
 }
 
 #data_refresh,
