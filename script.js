@@ -130,7 +130,7 @@ function getDate() {
 
   todaysDate = year + "-" + month + "-" + day; // formats as a string
   console.log("Today's Date: " + todaysDate); // prints the date out to the console
-  document.getElementById("date_start").value = "2017-02-02";
+  document.getElementById("date_start").value = "2023-04-22";
   //document.getElementById("date-end").value = todaysDate; // sets the date inputs to equal today's date
   document.getElementById("date_end").value = todaysDate;
 }
