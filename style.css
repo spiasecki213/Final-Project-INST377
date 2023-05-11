@@ -206,8 +206,8 @@ p {
 }
 
 #map {
-  width: 400px;
-  height: 300px;
+  width: 600px;
+  height: 400px;
   margin-bottom: 1rem;
 }
 
@@ -283,6 +283,11 @@ p {
     max-width: 80%;
     height: auto;
   
+  }
+  #map {
+    width: 400px;
+    height: 300px;
+    margin-bottom: 1rem;
   }
   
 }
