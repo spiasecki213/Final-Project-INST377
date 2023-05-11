@@ -4,38 +4,77 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    
     <title>Sam's INST377 Final Project</title>
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" /> <!-- my CSS page -->
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/> <!-- Leaflet CSS -->
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script> <!-- Leaflet Script -->
   </head>
   <body>
     <!-- wrapper -->
     <div class="wrapper">
       <!-- header -->
       <header class="header">
-        <!-- navigation -->
-        <div class="nav">
-          <h1>PG County Crime Visualization</h1>
-          <!-- tabs -->
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-          </ul>
+        <div id="logo">
+          <a href="index.html"><img src="images/site_logo.JPG"></a>
         </div>
+        <!-- navigation -->
+        <nav>
+          <div id="nav_bar">
+            <!-- tabs -->
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+          </div>
+        </nav>
       </header>
       <!-- container -->
       <div class="container">
         <div class="about_section">
             <h2>About</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna 
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit 
-                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
-                occaecat cupidatat non proident, sunt in culpa qui officia 
-                deserunt mollit anim id est laborum.
+            <p>
+              For my website, I used the Prince George's County CRIME dataset as my 
+              source to visualize data so that current and future residents of PG 
+              County can keep track of crime in their area.<br><br>
+              <a href="https://data.princegeorgescountymd.gov/Public-Safety/Crime-Incidents-
+              February-2017-to-Present/wb4e-w4nf/data">PC County 
+              CRIME Dataset</a></li>
+              <p>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+              Please follow the steps below to navigate the website:
+              <h5>Step 1: Date Filters</h5>
+              Click on each of the date filters and select a date you want to look at 
+              the crime data for. The filter will get dates including and in between 
+              the start and end date. The minimun date is set to April 22, 2023 due to 
+              using 1000 rows at a time, but is not the final "minimum" date due to the 
+              API updating frequently.
+              <h5>Step 2: Crime Type</h5>
+              Click on one of the radio buttons to select which crime type you would 
+              like to see the data for. By default, the crime type is set to "Select All", 
+              which will return a list of crimes of all types. 
+              <h5>Step 3: Address</h5>
+              Type in the latitude and longitude of the address you want to focus around 
+              and the map will then shift its view to center around your given point. This 
+              is meant for new and existing residents to enter in their address and then 
+              check the area around them for instances of crime.
+              <h5>Step 4: Filter Button</h5>
+              Pressing the filter button will yield a list of crimes, with the ID, Date, 
+              and Crime Type fields being visible. The map will also update to house markers 
+              of each crime instance. Clicking on a marker will show you the same information 
+              as the list of crimes does. (i.e. ID, Date, and Crime Type)
+              <p>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+              When you are done reading the instructions on this page, you may click the 
+              "Home" tab at the top of this website, or the icon, to redirect you back 
+              to the homepage.
+              <br>
+              Thank you!
             </p>
             <h4>My Github Account:</h4>
             <a href="https://github.com/spiasecki213">spiasecki213</a>
